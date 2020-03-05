@@ -18,13 +18,13 @@ fecha = input("Ingrese su Fecha\n "+"Año-Mes-día:\n")
 aerolinea = input("Ingrese su Aerolinea: ")
 precio = input("Ingrese su Precio: ")
 
-mensajeE = nombre+","+cedula+","+origen+","+destino+","+hora+","+fecha+","+aerolinea+","+precio
+mensajeE = nombre+", "+cedula+", "+origen+", "+destino+", "+hora+", "+fecha+", "+aerolinea+", "+precio
 
 s.sendall(mensajeE.encode())
 data = s.recv(1024)
 cadena = data.decode("utf-8")
 s.close()
-print ('el cliente recibio: '+ cadena)
+print (cadena)
 
 """
 Created on Thu Mar  5 04:49:34 2020
