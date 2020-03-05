@@ -8,7 +8,7 @@ import pymysql.cursors
 
 contraseña = "261120"
 Db = "Prueba"
-Port = 60000
+Port = 50000
 Host = 'localhost'
 
 conexion = pymysql.connect(host="localhost",
@@ -54,13 +54,14 @@ conn, addr = s.accept()
 while 1:
     datos = conn.recv(1024)
     desencrip = datos.decode("utf-8")
+    
     if not datos:
         break
     
     conn.sendall(datos)
 
+#   Cierro el servidor
 conn.close    
-
 s.close()
 
 #   Cierro la conexion interna de la DB
