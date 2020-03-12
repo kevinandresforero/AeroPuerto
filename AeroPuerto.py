@@ -34,7 +34,7 @@ conexion = pymysql.connect(host="localhost",
 try:
     CrearTabla = "CREATE TABLE VuelosClientes (Id int NOT NULL AUTO_INCREMENT,\
     Nombre varchar(50), Cedula int(10) NOT NULL,Origen varchar(30),\
-    Destino varchar(30),Hora varchar(5),Fecha DATE,Aerolinea varchar(15),\
+    Destino varchar(30),Hora varchar(5),Fecha varchar(10),Aerolinea varchar(15),\
     Precio float(8),PRIMARY KEY (Id));"
     cursor = conexion.cursor()
     cursor.execute(CrearTabla)
@@ -48,7 +48,7 @@ except:
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((Host,Port))
 
-s.listen(1)
+s.listen(2)
 
 conn, addr = s.accept()
 

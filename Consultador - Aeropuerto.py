@@ -1,6 +1,7 @@
 #!import pymysql.cursors
 import tkinter as tk
 from tkinter import *
+import pymysql
 
 contraseña = "261120"
 Db = "Prueba"
@@ -46,7 +47,9 @@ def EjecutarConsultaCedula():
             column=0,
             sticky=tk.W,
             pady=4)
-    t1.insert(END, datos2)
+    for dtos in record:
+        t1.insert(END, dtos)
+        t1.insert(END, "\n")
 
     l1 = tk.Label(nueva_ventana, text="Registro con esta información:", bg="black", fg="red").grid(row=0,
 
@@ -89,7 +92,9 @@ def EjecutarConsultaDestino():
             column=0,
             sticky=tk.W,
             pady=4)
-    t1.insert(END, datos2)
+    for dtos in record:
+        t1.insert(END, dtos)
+        t1.insert(END, "\n")
 
     l1 = tk.Label(nueva_ventana, text="Registro con esta información:", bg="black", fg="red").grid(row=0,
                                                                                                    column=0)
@@ -130,7 +135,9 @@ def EjecutarConsultaAerolinea():
             column=0,
             sticky=tk.W,
             pady=4)
-    t1.insert(END, datos2)
+    for dtos in record:
+        t1.insert(END, dtos)
+        t1.insert(END, "\n")
 #
     l1 = tk.Label(nueva_ventana, text="Registro con esta información:", bg="black", fg="red").grid(row=0,
                                                                                                    column=0)
@@ -171,10 +178,13 @@ def EjecutarConsultaFecha():
             column=0,
             sticky=tk.W,
             pady=4)
-    t1.insert(END, datos2)
-
+    for dtos in record:
+        t1.insert(END, dtos)
+        t1.insert(END, "\n")
+        
     l1 = tk.Label(nueva_ventana, text="Registro con esta información:", bg="black", fg="red").grid(row=0,
-                                                                                                   column=0)
+      
+                                                                                             column=0)
 #    l2 = tk.Label(nueva_ventana, textvariable=datos).grid(row=1,
 #                                                          column=0)
 
@@ -198,15 +208,33 @@ def ConsultarTodos():
     cursor.execute(MostrarTablaMa)
     record = cursor.fetchall()
 
-    datos = tk.StringVar()
-    datos.set(record)
-#    record = record.
+    
+#    print(record)
+    
     t1 = tk.Text(nueva_ventana)
     t1.grid(row=2,
             column=0,
             sticky=tk.W,
             pady=4)
-    t1.insert(END, record)
+    
+    
+#    contenido = str(record).split("}")
+#    n = len(contenido)
+#    i=0
+#    while (i < n):
+#        if contenido[i] == "}":
+#            contenido = contenido.replace(contenido[i],"\n")
+#            print(contenido)
+#        i = i + 1
+#    print(contenido)
+#    t1.insert(END, contenido)
+    
+    for dtos in record:
+        t1.insert(END, dtos)
+        t1.insert(END, "\n")
+        
+        
+    
 
     l1 = tk.Label(nueva_ventana, text="Registro Total:", bg="black", fg="red").grid(row=0,
                                                                                     column=0)
@@ -285,4 +313,3 @@ tk.Button(marco, text="Cerrar", command=cerrar, bg="black", fg="red").grid(row=5
                                                                            padx=45)
 
 marco.mainloop()
-|
